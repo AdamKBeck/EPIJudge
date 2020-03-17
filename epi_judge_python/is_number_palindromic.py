@@ -1,9 +1,21 @@
+from math import pow
 from test_framework import generic_test
 
 
 def is_palindrome_number(x: int) -> bool:
-    # TODO - you fill in here.
-    return True
+    if x < 0:
+        return False
+
+    copy = x
+    result = 0
+
+    while x:
+        result *= 10
+        result += x % 10
+        x //= 10
+
+    return result == copy
+
 
 
 if __name__ == '__main__':
