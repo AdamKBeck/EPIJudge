@@ -12,8 +12,27 @@ def zero_one_random():
 
 
 def uniform_random(lower_bound: int, upper_bound: int) -> int:
-    # TODO - you fill in here.
-    return 0
+    def zero_to_x_random(x):
+        """
+        Find a random number between [0,y], where x = upper_bound - lower_bound,
+        and y = the greatest number you can form from the amount of bits that x is.
+        """
+        solution = 0
+
+        while x != 0:
+            x >>= 1
+            solution *= 2
+            solution += zero_one_random()
+
+        return solution
+
+    x = upper_bound - lower_bound
+    ans = zero_to_x_random(x) + lower_bound
+
+    while ans > upper_bound:
+        ans = zero_to_x_random(x) + lower_bound
+
+    return ans
 
 
 @enable_executor_hook
