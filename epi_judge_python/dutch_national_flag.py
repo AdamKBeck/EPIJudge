@@ -1,4 +1,5 @@
 import functools
+import operator
 from typing import List
 
 from test_framework import generic_test
@@ -9,8 +10,19 @@ RED, WHITE, BLUE = range(3)
 
 
 def dutch_flag_partition(pivot_index: int, A: List[int]) -> None:
-    # TODO - you fill in here.
-    return
+    def partition(l, r, pivot, op):
+        while l <= r:
+            if op(A[l], pivot):
+                l += 1
+            else:
+                A[l], A[r] = A[r], A[l]
+                r -= 1
+
+        return l
+
+    pivot = A[pivot_index]
+    l = partition(0, len(A)-1, pivot, operator.lt)
+    partition(l, len(A)-1, pivot, operator.eq)
 
 
 @enable_executor_hook
