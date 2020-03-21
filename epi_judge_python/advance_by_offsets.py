@@ -4,7 +4,17 @@ from test_framework import generic_test
 
 
 def can_reach_end(A: List[int]) -> bool:
-    # TODO - you fill in here.
+    end = len(A) - 1
+    i = 0
+    moves_left = A[i]
+
+    while i + A[i] < end:
+        if not moves_left:
+            return False
+
+        i += 1
+        moves_left = max(moves_left-1, A[i])
+
     return True
 
 
