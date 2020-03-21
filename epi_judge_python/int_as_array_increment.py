@@ -4,16 +4,12 @@ from test_framework import generic_test
 
 
 def plus_one(A: List[int]) -> List[int]:
-    i = len(A) - 1
-
-    while i >= 0:
+    for i in reversed(range(len(A))):
         if A[i] == 9:
             A[i] = 0
         else:
             A[i] += 1
             return A
-
-        i -= 1
 
     # Instead of ```return [1] + A```, we do this to save runtime
     A[0] = 1
