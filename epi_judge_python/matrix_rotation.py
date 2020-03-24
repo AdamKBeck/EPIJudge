@@ -4,8 +4,16 @@ from test_framework import generic_test
 
 
 def rotate_matrix(square_matrix: List[List[int]]) -> None:
-    # TODO - you fill in here.
-    return
+    def rotate(i, j):
+        A = square_matrix
+
+        A[i][j], A[j][-1-i], A[-1-i][-1-j], A[-1-j][i] = (
+            A[-1-j][i], A[i][j], A[j][-1-i], A[-1-i][-1-j]
+        )
+
+    for i in range(len(square_matrix)//2):
+        for j in range(i, len(square_matrix)-1-i):
+            rotate(i, j)
 
 
 def rotate_matrix_wrapper(square_matrix):
