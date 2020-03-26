@@ -518,7 +518,7 @@ problem_mapping = {
                 "total": 10000
             },
             "Python: spreadsheet_encoding.py": {
-                "passed": 0,
+                "passed": 10000,
                 "total": 10000
             }
         },
@@ -546,7 +546,7 @@ problem_mapping = {
                 "total": 305
             },
             "Python: is_string_palindromic_punctuation.py": {
-                "passed": 0,
+                "passed": 305,
                 "total": 305
             }
         },
