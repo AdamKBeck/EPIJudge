@@ -1,15 +1,33 @@
+from itertools import groupby
+
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 
 
 def decoding(s: str) -> str:
-    # TODO - you fill in here.
-    return ''
+    ans = []
+    i = j = 0
+
+    while j < len(s):
+        if not s[j].isalpha():
+            j += 1
+        else:
+            ans.append(int(s[i:j]) * s[j])
+            j += 1
+            i = j
+
+    return ''.join(ans)
 
 
 def encoding(s: str) -> str:
-    # TODO - you fill in here.
-    return ''
+    ans = []
+
+    for letter, group in groupby(s):
+        ans.append(str(len(list(group))))
+        ans.append(letter)
+
+    return ''.join(ans)
+
 
 
 def rle_tester(encoded, decoded):
