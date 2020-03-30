@@ -2,8 +2,14 @@ from test_framework import generic_test
 
 
 def rabin_karp(t: str, s: str) -> int:
-    # TODO - you fill in here.
-    return 0
+    if not s:
+        return 0
+
+    for i, x in enumerate(t):
+        if x == s[0] and t[i:i+len(s)] == s:
+            return i
+
+    return -1
 
 
 if __name__ == '__main__':
