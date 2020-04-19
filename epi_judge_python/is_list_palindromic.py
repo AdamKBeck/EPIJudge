@@ -3,7 +3,18 @@ from test_framework import generic_test
 
 
 def is_linked_list_a_palindrome(L: ListNode) -> bool:
-    # TODO - you fill in here.
+    seen = []
+    while L:
+        seen.append(L.data)
+        L = L.next
+
+    n = len(seen)
+
+    for i in range(0, n//2):
+        l, r = seen[i], seen[n-1-i]
+        if l != r:
+            return False
+
     return True
 
 
