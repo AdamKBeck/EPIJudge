@@ -1,23 +1,35 @@
+from dataclasses import dataclass
+from typing import List
+
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 
 
+@dataclass(frozen=True)
+class MaxStack:
+    value: int
+    max_value: int
+
 class Stack:
+    def __init__(self):
+        self._maxstack: List[MaxStack] = []
+
     def empty(self) -> bool:
-        # TODO - you fill in here.
-        return True
+        return not bool(self._maxstack)
 
     def max(self) -> int:
-        # TODO - you fill in here.
-        return 0
+        return self._maxstack[-1].max_value
 
     def pop(self) -> int:
-        # TODO - you fill in here.
-        return 0
+        return self._maxstack.pop().value
 
     def push(self, x: int) -> None:
-        # TODO - you fill in here.
-        return
+        self._maxstack.append(
+            MaxStack(
+                x,
+                x if self.empty() else max(x, self.max())
+            )
+        )
 
 
 def stack_tester(ops):
