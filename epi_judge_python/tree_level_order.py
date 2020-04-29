@@ -7,7 +7,7 @@ from test_framework import generic_test
 
 def binary_tree_depth_order(tree: BinaryTreeNode) -> List[List[int]]:
     if not tree:
-        return None
+        return []
 
     ans = []
     current_level = [tree]
